@@ -7,8 +7,9 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <context:property-placeholder location="classpath:account.properties" />
-
+        <context:component-scan base-package="ATM"/>
+<!--
+        <context:property-placeholder location="classpath:account.properties" />
     <bean id="user"
           class="ATM.Users"
           scope="prototype">
@@ -27,5 +28,5 @@
           init-method="DoMyInit"
           destroy-method="DoMyDestroy"
           scope="singleton">
-    </bean>
+    </bean> -->
 </beans>

@@ -1,5 +1,8 @@
 package ATM;
 
+import org.springframework.stereotype.Component;
+
+@Component("user")
 public class Users {String name;
     int id;
     String password;

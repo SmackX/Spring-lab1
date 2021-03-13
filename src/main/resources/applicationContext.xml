@@ -7,19 +7,25 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <bean id="account"
-          class="Lab1.Account">
-    </bean>
+    <context:property-placeholder location="classpath:account.properties" />
 
-    <bean id="menu"
-          class="Lab1.TerminalMenu">
+    <bean id="user"
+          class="ATM.Users"
+          scope="prototype">
+        <property name="name" value="${account.name}"></property>
+        <property name="password" value="patmat16a"></property>
     </bean>
-    <bean id="services"
-          class="Lab1.BankServices">
+    <bean id="service"
+          class="ATM.Service"
+          init-method="DoMyInit"
+          destroy-method="DoMyDestroy"
+          scope="singleton">
+        <constructor-arg ref="user"></constructor-arg>
     </bean>
-    <bean id="accountPin" class="Lab1.Account">
-        <property name="pin" value="12345"/>
+    <bean id="DB"
+          class="ATM.DBConnection"
+          init-method="DoMyInit"
+          destroy-method="DoMyDestroy"
+          scope="singleton">
     </bean>
-
-
 </beans>
